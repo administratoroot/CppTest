@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MultiInherit", "MulitInherit\MulitInherit.vcxproj", "{E56CC3E6-D82C-48E8-AD76-317C366F5C5E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SCOPE_EXIT", "SCOPE_EXIT\SCOPE_EXIT.vcxproj", "{FACC22C0-B3C4-467D-932E-94765489FC5E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E56CC3E6-D82C-48E8-AD76-317C366F5C5E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E56CC3E6-D82C-48E8-AD76-317C366F5C5E}.Debug|Win32.Build.0 = Debug|Win32
+		{E56CC3E6-D82C-48E8-AD76-317C366F5C5E}.Release|Win32.ActiveCfg = Release|Win32
+		{E56CC3E6-D82C-48E8-AD76-317C366F5C5E}.Release|Win32.Build.0 = Release|Win32
+		{FACC22C0-B3C4-467D-932E-94765489FC5E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FACC22C0-B3C4-467D-932E-94765489FC5E}.Debug|Win32.Build.0 = Debug|Win32
+		{FACC22C0-B3C4-467D-932E-94765489FC5E}.Release|Win32.ActiveCfg = Release|Win32
+		{FACC22C0-B3C4-467D-932E-94765489FC5E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
