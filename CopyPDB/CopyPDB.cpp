@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <windows.h>
 using namespace std;
 string getFtpPath(string& sContent)
 {
@@ -59,6 +60,7 @@ int main()
 	}
 	string sFtpPath = getFtpPath(sContent);
 	file.close();
+	DeleteFile("svnLogText.txt");
 	string sCmd = "xcopy " + sFtpPath + " c:\\tmp /e /i /y /f";
 	system(sCmd.c_str());
 	system("CopyPDB.bat");
