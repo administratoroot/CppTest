@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5B2B28BD-62C2-4EE5-B1A5-C11DDFA90BEF}</ProjectGuid>
-    <RootNamespace>SmartPoint</RootNamespace>
+    <ProjectGuid>{621CFFF2-31DA-4E93-BCD5-B408CE4F2B1E}</ProjectGuid>
+    <RootNamespace>ExpertCProgramming</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -118,17 +118,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GMutex.cpp" />
-    <ClCompile Include="Integer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Reference.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="GMutex.h" />
-    <ClInclude Include="GNonCopyable.h" />
-    <ClInclude Include="Integer.h" />
-    <ClInclude Include="Reference.h" />
-    <ClInclude Include="RefPtr.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

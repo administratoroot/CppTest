@@ -42,7 +42,10 @@ namespace ggp {
 		/*!
 		*@brief 析构函数
 		*/
-		~CRefPtr() { if (_ptr) _ptr->Unref();  _ptr = 0; }
+		~CRefPtr() { 
+            if (_ptr) _ptr->Unref();  
+            _ptr = 0; 
+        }
 
 		/*!
 		*@brief 重载赋值符号
