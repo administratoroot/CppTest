@@ -5,6 +5,7 @@ int main()
 {
     for (int i = 0; i < 10; ++i)
     {
+		return 0;
         SCOPE_EXIT
         {
             cout << "helloworld!" << endl;
