@@ -17,6 +17,6 @@ int main()
     test1(p1.get());
     cout << *i << endl;
     
-    //system("pause");
+    system("pause");
     return 0;
 }
