@@ -11,7 +11,7 @@ Integer::Integer(int i) :m_i(i)
 
 Integer::~Integer()
 {
-
+    cout << "destruction object,the value is" << m_i << endl;
 }
 
 int Integer::getValue()
