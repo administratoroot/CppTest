@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MultiInherit", "MulitInherit\MulitInherit.vcxproj", "{E56CC3E6-D82C-48E8-AD76-317C366F5C5E}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SmartPoint", "SmartPoint\SmartPoint.vcxproj", "{5B2B28BD-62C2-4EE5-B1A5-C11DDFA90BEF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "structAlign", "structAlign\structAlign.vcxproj", "{E8776E2C-1DD9-4A10-96D6-97B4A0E650C6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TempTest", "TempTest\TempTest.vcxproj", "{027D2D61-4CC2-4C35-8AEF-3D6FA1516415}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +97,14 @@ Global
 		{E8776E2C-1DD9-4A10-96D6-97B4A0E650C6}.Release|Win32.ActiveCfg = Release|Win32
 		{E8776E2C-1DD9-4A10-96D6-97B4A0E650C6}.Release|Win32.Build.0 = Release|Win32
 		{E8776E2C-1DD9-4A10-96D6-97B4A0E650C6}.Release|x64.ActiveCfg = Release|Win32
+		{027D2D61-4CC2-4C35-8AEF-3D6FA1516415}.Debug|Win32.ActiveCfg = Debug|Win32
+		{027D2D61-4CC2-4C35-8AEF-3D6FA1516415}.Debug|Win32.Build.0 = Debug|Win32
+		{027D2D61-4CC2-4C35-8AEF-3D6FA1516415}.Debug|x64.ActiveCfg = Debug|x64
+		{027D2D61-4CC2-4C35-8AEF-3D6FA1516415}.Debug|x64.Build.0 = Debug|x64
+		{027D2D61-4CC2-4C35-8AEF-3D6FA1516415}.Release|Win32.ActiveCfg = Release|Win32
+		{027D2D61-4CC2-4C35-8AEF-3D6FA1516415}.Release|Win32.Build.0 = Release|Win32
+		{027D2D61-4CC2-4C35-8AEF-3D6FA1516415}.Release|x64.ActiveCfg = Release|x64
+		{027D2D61-4CC2-4C35-8AEF-3D6FA1516415}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
