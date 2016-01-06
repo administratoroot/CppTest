@@ -1,5 +1,5 @@
 #include "Integer.h"
-Integer::Integer()
+Integer::Integer() :m_i(0)
 {
 
 }
