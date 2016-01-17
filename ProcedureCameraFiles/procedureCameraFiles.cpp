@@ -1,3 +1,4 @@
+#include <afxwin.h>
 #include <iostream>
 #include <stdio.h>
 #include <io.h>
