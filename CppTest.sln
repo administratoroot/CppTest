@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SmartPoint", "SmartPoint\Sm
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "structAlign", "structAlign\structAlign.vcxproj", "{E8776E2C-1DD9-4A10-96D6-97B4A0E650C6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShareMemory", "ShareMemory\ShareMemory.vcxproj", "{741831A4-7683-402D-9A9E-B66B7483B7B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -95,6 +97,12 @@ Global
 		{E8776E2C-1DD9-4A10-96D6-97B4A0E650C6}.Release|Win32.ActiveCfg = Release|Win32
 		{E8776E2C-1DD9-4A10-96D6-97B4A0E650C6}.Release|Win32.Build.0 = Release|Win32
 		{E8776E2C-1DD9-4A10-96D6-97B4A0E650C6}.Release|x64.ActiveCfg = Release|Win32
+		{741831A4-7683-402D-9A9E-B66B7483B7B9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{741831A4-7683-402D-9A9E-B66B7483B7B9}.Debug|Win32.Build.0 = Debug|Win32
+		{741831A4-7683-402D-9A9E-B66B7483B7B9}.Debug|x64.ActiveCfg = Debug|Win32
+		{741831A4-7683-402D-9A9E-B66B7483B7B9}.Release|Win32.ActiveCfg = Release|Win32
+		{741831A4-7683-402D-9A9E-B66B7483B7B9}.Release|Win32.Build.0 = Release|Win32
+		{741831A4-7683-402D-9A9E-B66B7483B7B9}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
