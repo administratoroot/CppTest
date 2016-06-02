@@ -5,56 +5,60 @@ using namespace std;
 #define DMAXVALUE 10.5
 #define DEFAULTRPN 0.5//默认风险系数
 struct ACard;
-
-std::map<int, ACard> mapCardValue;
-
-/*
-* 询问是否要牌。
-* pCount：参赛人数
-* cLen: 最多可要多少张明牌，默认为4
-* cIdx：当前参赛者的索引
-* playerStatus：当前牌局的局面，是一个二维数组 playerStatus[pCount][cLen],数组值为牌号，
-*   牌号值为[1..54],其中
-*     草花 club A~K ： 1 ~ 13
-*     方块 diamond A~K ： 14 ~ 26
-*     红心 hearts A ~ K ： 27 ~ 39
-*     黑桃 spade A ~ K ： 40 ~ 52
-*     小鬼：53
-*     大鬼： 54
-*   0 占位符，表示还没有要牌
-*/
-//bool wannaCall(int pCount, int cLen, int cIdx, int[][] playerStatus) {
-//    return false;
-//}
-
-/*
-* 像游戏者发牌时调用这个接口。
-* card: 发的牌号，牌号规则，参见 wannaCall 参数说明；
-*/
-//void deal(int card) 
-//{
-//
-//}
-
-enum Color
-{
-    P_CLUB = 0,//梅花
-    P_DIAMOND = 1,//方块
-    P_HEARTS = 2,//红桃
-    P_SPADE = 3//黑桃
-};
-
+static std::map<int, ACard> mapCardValue;//牌号 牌
+static std::vector<double> vecMyCards;
 struct ACard
 {
     ACard() :m_dValue(0.0), m_bInHeap(false){};
     ACard(double dValue, bool bInHeap) :m_dValue(dValue), m_bInHeap(bInHeap){};
 
-    double m_dValue;
-    bool m_bInHeap;
+    double m_dValue;//面值
+    bool m_bInHeap;//是否在堆里面
 };
+
+//获取数学期望
+double getCurExpInHeap()
+{
+    int nCount = 0;
+    double dTotal = 0.0;
+    double dRet = 0.0;
+    for each(auto card in mapCardValue)
+    {
+        ACard curCard = card.second;
+        if (curCard.m_bInHeap)
+        {
+            ++nCount;
+            dTotal += curCard.m_dValue;
+        }
+    }
+    dRet = dTotal / (double)nCount;
+    return dRet;
+}
+
+//获取标准差
+double getCurSTDInHeap()
+{
+    //S=[ (x1-x)^2+(x2-x)^2+(x3-x)^2+……+(xn-x)^2] 
+    double dExp = getCurExpInHeap();
+    double dTotal = 0.0;
+    int nCount = 0;
+    for each(auto card in mapCardValue)
+    {
+        ACard curCard = card.second;
+        if (curCard.m_bInHeap)
+        {
+            ++nCount;
+            double dValue = curCard.m_dValue;
+            dTotal += pow(dValue - dExp, 2);
+        }
+    }
+    double dVar = sqrt(dTotal / (double)nCount);
+    return dVar;
+}
 
 void initCardValueMap(std::map<int, ACard>& mapCardValue)
 {
+    mapCardValue.clear();
     for (int i = 1; i <= 54; ++i)//出题的诡异计数起始
     {
         if (i <= 10)
@@ -103,7 +107,7 @@ void recalcCardValueMap(int* playerStatus, const int& pCount, const int& cLen, s
     {
         for (int j = 0; j < cLen; j++)
         {
-            int nCardIndex = playerStatus[i*pCount + j];
+            int nCardIndex = playerStatus[i*cLen + j];
             if (nCardIndex != 0)
             {
                 mapCardValue[nCardIndex].m_bInHeap = false;
@@ -126,15 +130,28 @@ int getEnableCount(std::map<int, ACard>& mapCardValue)
     return nCount;
 }
 
-double getSurviveMathExp(double dTotal, std::map<int, ACard>& mapCardValue)
+double getMyTotal()
+{
+    double dTotal = 0.0;
+    for each(double dValue in vecMyCards)
+    {
+        dTotal += dValue;
+    }
+    return dTotal;
+}
+
+
+//静态生存概率算法
+double getSurviveMathExp(double dTotal)
 {
     double dRet = 0.0;
     int nEnableCount = getEnableCount(mapCardValue);//获取可用的牌数
-    int nCanLiveCount = 0;
+    int nCanLiveCount = 0;//抓牌是否可以存活
+    //double dCurMyTotal = getMyTotal();
     for each(auto card in mapCardValue)
     {
         ACard curCard = card.second;
-        if ((curCard.m_dValue + dTotal) <= DMAXVALUE)
+        if ((dTotal + curCard.m_dValue) <= DMAXVALUE)
         {
             ++nCanLiveCount;
         }
@@ -146,57 +163,64 @@ double getSurviveMathExp(double dTotal, std::map<int, ACard>& mapCardValue)
     return dRet;
 }
 
-double getMyTotal(int* playerStatus, const int& pCount, const int& cLen, const int& cIdx)
-{
-    double dTotal = 0.0;
-    for (int i = 0; i < cLen; ++i)
-    {
-        int nCardIndex = playerStatus[cIdx*cLen + i];
-        std::map<int, ACard>::iterator it = mapCardValue.find(nCardIndex);
-        if (it != mapCardValue.end())
-        {
-            dTotal += it->second.m_dValue;
-        }
-    }
-    return dTotal;
-}
 
-int getSurvivePlayerCount(int pCount, int cLen, int* playerStatus)
+int getEstimateSurvivePlayerCount(int pCount, int cLen, int* playerStatus, const int& cIdx)
 {
     int nCount = 0;
+
     for (int i = 0; i < pCount; i++)
     {
         double dPlayerTotal = 0.0;
-        for (int j = 0; j < cLen; j++)
+        if (cIdx == i)
         {
-            int nCardIndex = playerStatus[i*pCount + j];
-            
-            if (nCardIndex != 0)
+            //自己的不按照这算
+            dPlayerTotal = getMyTotal();
+            if (dPlayerTotal <= DMAXVALUE)
             {
-                dPlayerTotal += mapCardValue[nCardIndex].m_dValue;
+                ++nCount;
             }
+            continue;
         }
-        if (dPlayerTotal <= DMAXVALUE)
+        else
         {
-            ++nCount;
+            for (int j = 0; j < cLen; j++)
+            {
+                int nCardIndex = playerStatus[i*cLen + j];
+
+                if (nCardIndex != 0)
+                {
+                    dPlayerTotal += mapCardValue[nCardIndex].m_dValue;
+                }
+            }
+            //取置信区间在2σ范围内，概率P=95.4%
+            //double dCurExp = getCurExpInHeap();
+            //double dSTD = getCurSTDInHeap();
+            //采用较保守的估计法
+            //dCurExp += (dSTD * 2);
+            double dSurviveExp = getSurviveMathExp(dPlayerTotal);
+            //采用保守的估计法,生存概率>0.4视为存活
+            if (dSurviveExp > 0.4)
+            {
+                ++nCount;
+            }
         }
     }
     return nCount;
 }
 
-//动态调节风险系数算法
-double getDynamicRPN(int pCount, int cLen, int* playerStatus, double dSurviveExp)
+//动态基准风险系数调节算法
+double getDynamicRPN(int pCount, int cLen, int* playerStatus, double dSurviveExp, int cIdx)
 {
     //存活的玩家越少，越应该采取保守策略
     double dRpn = DEFAULTRPN;
-    int nSurvivePlayers = getSurvivePlayerCount(pCount, cLen, playerStatus);
+    int nSurvivePlayers = getEstimateSurvivePlayerCount(pCount, cLen, playerStatus, cIdx);
     //死亡比例系数
     double dDeadK = 1.0 - (double(nSurvivePlayers) / double(pCount));
     //0.5值是经验值
     dRpn += (dDeadK * 0.5);
 
     //两个人单挑的时候,静态生存概率小于0.7我才抓牌，否则我宁可不取牌，来换取自身的安全
-    if (!nSurvivePlayers < 3)
+    if (nSurvivePlayers < 3)
     {
         if (dSurviveExp < 0.7)
         {
@@ -206,20 +230,31 @@ double getDynamicRPN(int pCount, int cLen, int* playerStatus, double dSurviveExp
     return dRpn;
 }
 
-bool wannaCall(int pCount, int cLen, int cIdx, int* playerStatus) 
+const char* getName()
 {
+    return "zhangx-y";
+}
+
+void notifyGameStart()
+{
+    initCardValueMap(mapCardValue);//每局开始时候需要初始化
+}
+
+bool wannaCall(int pCount, int cLen, int cIdx, int* playerStatus)
+{
+    recalcCardValueMap(playerStatus, pCount, cLen, mapCardValue);
+
     bool bRet = false;
     //我的总共面值
-    double dMyTotal = getMyTotal(playerStatus, pCount, cLen, cIdx);
+    double dMyTotal = getMyTotal();
     //当前抓牌我能存活的数学期望
-    double dSurviveExp = getSurviveMathExp(dMyTotal, mapCardValue);
-    //根据玩家数调节风险系数
-    double dRpn = getDynamicRPN(pCount, cLen, playerStatus, dSurviveExp);
-    
+    double dSurviveExp = getSurviveMathExp(dMyTotal);
+
+    //根据玩家数动态调节风险系数
+    double dRpn = getDynamicRPN(pCount, cLen, playerStatus, dSurviveExp, cIdx);
     //剩的玩家越少，越应该保守
-    int nRemainplayers = getSurvivePlayerCount(pCount, cLen, playerStatus);
-    
-    
+    //int nRemainplayers = getEstimateSurvivePlayerCount(pCount, cLen, playerStatus, cIdx);
+
     if ((dSurviveExp > dRpn))
     {
         bRet = true;
@@ -227,20 +262,31 @@ bool wannaCall(int pCount, int cLen, int cIdx, int* playerStatus)
     return bRet;
 }
 
+void deal(int card)
+{
+    //Nothing to do.
+    mapCardValue[card].m_bInHeap = false;
+    vecMyCards.push_back(mapCardValue[card].m_dValue);
+}
+
 int main()
 {
-    //std::map<int, ACard> mapCardValue;
     initCardValueMap(mapCardValue);//每局开始时候需要初始化
-#define PLAYERCOUNT 3
-#define VISIABLECARDSCOUNT 4
-    int playerStatus[PLAYERCOUNT][VISIABLECARDSCOUNT] =
-    {
-        {2,1,4,0},
-        {3,15,0,0},
-        {9,10,0,0}
-    };
-    recalcCardValueMap(playerStatus[0], PLAYERCOUNT, VISIABLECARDSCOUNT, mapCardValue);
-    bool bNeed = wannaCall(PLAYERCOUNT, VISIABLECARDSCOUNT, 1, playerStatus[0]);
+//    
+//#define PLAYERCOUNT 5
+//#define VISIABLECARDSCOUNT 4
+//    int playerStatus[PLAYERCOUNT][VISIABLECARDSCOUNT] =
+//    {
+//        {2,1,4,0},
+//        {34,15,0,0},
+//        {9,10,0,0},
+//        {5,32,0,0},
+//        {33,42,0,0}
+//    };
+//    deal(34);
+//    deal(15);
+//    recalcCardValueMap(playerStatus[0], PLAYERCOUNT, VISIABLECARDSCOUNT, mapCardValue);
+//    bool bNeed = wannaCall(PLAYERCOUNT, VISIABLECARDSCOUNT, 1, playerStatus[0]);
     return 0;
 }
 
