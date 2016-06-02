@@ -272,21 +272,21 @@ void deal(int card)
 int main()
 {
     initCardValueMap(mapCardValue);//每局开始时候需要初始化
-//    
-//#define PLAYERCOUNT 5
-//#define VISIABLECARDSCOUNT 4
-//    int playerStatus[PLAYERCOUNT][VISIABLECARDSCOUNT] =
-//    {
-//        {2,1,4,0},
-//        {34,15,0,0},
-//        {9,10,0,0},
-//        {5,32,0,0},
-//        {33,42,0,0}
-//    };
-//    deal(34);
-//    deal(15);
-//    recalcCardValueMap(playerStatus[0], PLAYERCOUNT, VISIABLECARDSCOUNT, mapCardValue);
-//    bool bNeed = wannaCall(PLAYERCOUNT, VISIABLECARDSCOUNT, 1, playerStatus[0]);
+      
+    #define PLAYERCOUNT 5
+	#define VISIABLECARDSCOUNT 4
+	int playerStatus[PLAYERCOUNT][VISIABLECARDSCOUNT] =
+	{
+		{2,1,4,0},
+		{34,15,0,0},
+		{9,10,0,0},
+		{5,32,0,0},
+		{33,42,0,0}
+	};
+	deal(34);
+	deal(15);
+	recalcCardValueMap(playerStatus[0], PLAYERCOUNT, VISIABLECARDSCOUNT, mapCardValue);
+	bool bNeed = wannaCall(PLAYERCOUNT, VISIABLECARDSCOUNT, 1, playerStatus[0]);
     return 0;
 }
 
