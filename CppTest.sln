@@ -33,6 +33,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QtSqlite", "QtSqlite\QtSqli
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlite", "sqlite\sqlite.vcxproj", "{1C3F045F-33F1-4B34-A7F0-E125C2B21910}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QTfrm", "QTfrm\QTfrm.vcxproj", "{35C995BE-DBE2-44F7-BD4E-2C3BB2481C12}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VersionUtil", "VersionUtil\VersionUtil.vcxproj", "{CB64329D-CE53-4D4C-8236-87D714AAA2EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -143,6 +147,18 @@ Global
 		{1C3F045F-33F1-4B34-A7F0-E125C2B21910}.Release|Win32.ActiveCfg = Release|Win32
 		{1C3F045F-33F1-4B34-A7F0-E125C2B21910}.Release|Win32.Build.0 = Release|Win32
 		{1C3F045F-33F1-4B34-A7F0-E125C2B21910}.Release|x64.ActiveCfg = Release|Win32
+		{35C995BE-DBE2-44F7-BD4E-2C3BB2481C12}.Debug|Win32.ActiveCfg = Debug|Win32
+		{35C995BE-DBE2-44F7-BD4E-2C3BB2481C12}.Debug|Win32.Build.0 = Debug|Win32
+		{35C995BE-DBE2-44F7-BD4E-2C3BB2481C12}.Debug|x64.ActiveCfg = Debug|Win32
+		{35C995BE-DBE2-44F7-BD4E-2C3BB2481C12}.Release|Win32.ActiveCfg = Release|Win32
+		{35C995BE-DBE2-44F7-BD4E-2C3BB2481C12}.Release|Win32.Build.0 = Release|Win32
+		{35C995BE-DBE2-44F7-BD4E-2C3BB2481C12}.Release|x64.ActiveCfg = Release|Win32
+		{CB64329D-CE53-4D4C-8236-87D714AAA2EC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CB64329D-CE53-4D4C-8236-87D714AAA2EC}.Debug|Win32.Build.0 = Debug|Win32
+		{CB64329D-CE53-4D4C-8236-87D714AAA2EC}.Debug|x64.ActiveCfg = Debug|Win32
+		{CB64329D-CE53-4D4C-8236-87D714AAA2EC}.Release|Win32.ActiveCfg = Release|Win32
+		{CB64329D-CE53-4D4C-8236-87D714AAA2EC}.Release|Win32.Build.0 = Release|Win32
+		{CB64329D-CE53-4D4C-8236-87D714AAA2EC}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
