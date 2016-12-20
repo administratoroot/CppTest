@@ -3,7 +3,7 @@
 GTJCouldVersionUtil::EnResult GTJCouldVersionUtil::compareVersion(const QString& sVer1, const QString& sVer2)
 {
     //校验版本号的正则表达式   
-    QString pattern("^(\\d\\.)*\\d$");
+    QString pattern("^(\\d+\\.)*\\d+$");
     QRegExp regExp(pattern);
 
     bool match = true;
