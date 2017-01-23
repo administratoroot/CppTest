@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FilterNumArraysClass</class>
+ <widget class="QDialog" name="FilterNumArraysClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>659</width>
+    <height>534</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>排列三生成器</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="filternumarrays.qrc">
+    <normaloff>:/FilterNumArrays/Resources/logo.ico</normaloff>:/FilterNumArrays/Resources/logo.ico</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="3" column="0">
+      <widget class="QPlainTextEdit" name="plainTextEdit30"/>
+     </item>
+     <item row="0" column="2">
+      <widget class="QPlainTextEdit" name="plainTextEdit_02"/>
+     </item>
+     <item row="3" column="1">
+      <widget class="QPlainTextEdit" name="plainTextEdit_31"/>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPlainTextEdit" name="plainTextEdit_21"/>
+     </item>
+     <item row="3" column="2">
+      <widget class="QPlainTextEdit" name="plainTextEdit_32"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPlainTextEdit" name="plainTextEdit_20"/>
+     </item>
+     <item row="0" column="0">
+      <widget class="QPlainTextEdit" name="plainTextEdit_00"/>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPlainTextEdit" name="plainTextEdit_14"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPlainTextEdit" name="plainTextEdit_13"/>
+     </item>
+     <item row="1" column="2">
+      <widget class="QPlainTextEdit" name="plainTextEdit_15"/>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPlainTextEdit" name="plainTextEdit_01"/>
+     </item>
+     <item row="2" column="2">
+      <widget class="QPlainTextEdit" name="plainTextEdit_22"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>结算结果</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPlainTextEdit" name="plainTextEdit_Result"/>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="filternumarrays.qrc"/>
+ </resources>
+ <connections/>
+</ui>

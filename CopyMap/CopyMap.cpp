@@ -3,6 +3,7 @@
 using namespace std;
 class TestMap
 {
+
 public:
 	void setMap(map<int, int> newMap);
 	map<int, int> getMap();
