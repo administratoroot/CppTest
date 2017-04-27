@@ -41,6 +41,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VersionUtil", "VersionUtil\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MultiThreadTest", "MultiThreadTest\MultiThreadTest.vcxproj", "{190FF66C-81D7-4735-B520-4FB3BAB66117}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sort", "sort\sort.vcxproj", "{D7E5FC7C-F811-4159-B35F-D6CB6BE204D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -177,6 +179,12 @@ Global
 		{190FF66C-81D7-4735-B520-4FB3BAB66117}.Release|Win32.Build.0 = Release|Win32
 		{190FF66C-81D7-4735-B520-4FB3BAB66117}.Release|x64.ActiveCfg = Release|x64
 		{190FF66C-81D7-4735-B520-4FB3BAB66117}.Release|x64.Build.0 = Release|x64
+		{D7E5FC7C-F811-4159-B35F-D6CB6BE204D7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D7E5FC7C-F811-4159-B35F-D6CB6BE204D7}.Debug|Win32.Build.0 = Debug|Win32
+		{D7E5FC7C-F811-4159-B35F-D6CB6BE204D7}.Debug|x64.ActiveCfg = Debug|Win32
+		{D7E5FC7C-F811-4159-B35F-D6CB6BE204D7}.Release|Win32.ActiveCfg = Release|Win32
+		{D7E5FC7C-F811-4159-B35F-D6CB6BE204D7}.Release|Win32.Build.0 = Release|Win32
+		{D7E5FC7C-F811-4159-B35F-D6CB6BE204D7}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -21,14 +21,14 @@ BTreeNode* constructTree(int* pPreStart, int* pPreEnd, int* pInStart, int* pInEn
     int* pCurIndex = pInStart;
     while (((*pCurIndex) != (*pPreStart)) && (pCurIndex < pInEnd))
     {
-         ++pCurIndex;
+        ++pCurIndex;
     }
 
 
     int nLeftLength = pCurIndex - pInStart;
     int nRightLength = pInEnd - pCurIndex;
 
-    if (nLeftLength>0)
+    if (nLeftLength > 0)
     {
         int* pPreStart1 = pPreStart + 1;
         int* pPreEnd1 = pPreStart + nLeftLength;
@@ -37,7 +37,7 @@ BTreeNode* constructTree(int* pPreStart, int* pPreEnd, int* pInStart, int* pInEn
         root->lChild = constructTree(pPreStart1, pPreEnd1, pInStart1, pInEnd1);
     }
 
-    if (nRightLength>0)
+    if (nRightLength > 0)
     {
         int* pPreStart2 = pPreStart + 1 + nLeftLength;
         int* pPreEnd2 = pPreEnd;
@@ -46,7 +46,7 @@ BTreeNode* constructTree(int* pPreStart, int* pPreEnd, int* pInStart, int* pInEn
         root->rChild = constructTree(pPreStart2, pPreEnd2, pInStart2, pInEnd2);
     }
 
-     return root;
+    return root;
 }
 
 BTreeNode* rebuildBTree(int* pPreOrder, int* pInOrder, int nLength)
